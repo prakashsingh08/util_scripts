@@ -8,3 +8,9 @@
 * gcloud auth activate-service-account test-bucket@demo1-183919.iam.gserviceaccount.com --key-file=$HOME/demo1-183919-e535bb01c5da.json
 * export GOOGLE_APPLICATION_CREDENTIALS="$HOME/demo1-183919-e535bb01c5da.json"
 * gcloud auth list
+
+### Listing bucket items
+
+https://cloud.google.com/storage/docs/gsutil/commands/ls
+
+* gsutil ls gs://bucket_name
