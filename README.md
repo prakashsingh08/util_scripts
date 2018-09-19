@@ -1,7 +1,7 @@
 # util_scripts
 
 
-###To connec to any GCP using ServiceAccount and it's key follow below procedure:
+### To connect to any GCP using ServiceAccount and it's key follow below procedure:
 
 * gcloud config set project demo1-183919
 * gcloud config set account test-bucket@demo1-183919.iam.gserviceaccount.com
