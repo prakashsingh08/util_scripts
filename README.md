@@ -14,3 +14,9 @@
 https://cloud.google.com/storage/docs/gsutil/commands/ls
 
 * gsutil ls gs://bucket_name
+
+### Viewing existing role in ServiceAccount
+
+gcloud iam service-accounts get-iam-policy test-bucket@demo1-183919.iam.gserviceaccount.com
+
+
