@@ -30,4 +30,8 @@ https://cloud.google.com/iam/docs/granting-roles-to-service-accounts
 
 https://cloud.google.com/iam/docs/understanding-roles
 
+* Primitive roles  =>  which include the Owner, Editor, and Viewer roles that existed prior to the introduction of Cloud IAM
+* Predefined roles => which provide granular access for a specific service and are managed by GCP
+* Custom roles     => which provide granular access according to a user-specified list of permissions
+
 
