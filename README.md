@@ -19,4 +19,11 @@ https://cloud.google.com/storage/docs/gsutil/commands/ls
 
 gcloud iam service-accounts get-iam-policy test-bucket@demo1-183919.iam.gserviceaccount.com
 
+### Granting Roles to ServiceAccount
+
+https://cloud.google.com/iam/docs/granting-roles-to-service-accounts
+
+* gcloud projects add-iam-policy-binding demo1-183919 --member serviceAccount:test-bucket@demo1-183919.iam.gserviceaccount.com --role roles/storage.objectCreator
+* gcloud iam service-accounts get-iam-policy test-bucket@demo1-183919.iam.gserviceaccount.com
+
 
