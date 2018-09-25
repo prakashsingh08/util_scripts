@@ -1,0 +1,34 @@
+gcloud compute target-vpn-gateways create vpn-1 --network vpc-1 --region europe-west1
+
+
+gcloud compute target-vpn-gateways create vpn-1 --network vpc-1 --region europe-west1
+
+gcloud compute target-vpn-gateways create vpn-2 --network vpc-2 --region asia-east1
+
+gcloud compute addresses create vpn1-static-ip --region europe-west1
+
+gcloud compute addresses create vpn2-static-ip --region asia-east1
+
+export STATIC_IP_VPN_1=35.241.188.192
+export STATIC_IP_VPN_2=35.221.138.218
+
+gcloud compute forwarding-rules create vpn-1-esp --region europe-west1 --ip-protocol ESP --address $STATIC_IP_VPN_1 --target-vpn-gateway vpn-1
+gcloud compute forwarding-rules create vpn-2-esp --region asia-east1 --ip-protocol ESP --address $STATIC_IP_VPN_2 --target-vpn-gateway vpn-2
+
+gcloud compute forwarding-rules create vpn-1-udp500 --region europe-west1 --ip-protocol UDP --ports 500 --address $STATIC_IP_VPN_1 --target-vpn-gateway vpn-1
+
+gcloud compute forwarding-rules create vpn-2-udp500 --region asia-east1 --ip-protocol UDP --ports 500 --address $STATIC_IP_VPN_2 --target-vpn-gateway vpn-2
+
+gcloud compute forwarding-rules create vpn-1-udp4500 --region europe-west1 --ip-protocol UDP --ports 4500 --address $STATIC_IP_VPN_1 --target-vpn-gateway vpn-1
+
+gcloud compute forwarding-rules create vpn-2-udp4500 --region asia-east1 --ip-protocol UDP --ports 4500 --address $STATIC_IP_VPN_2 --target-vpn-gateway vpn-2
+
+gcloud compute forwarding-rules list
+
+gcloud compute vpn-tunnels create tunnel1to2 --peer-address $STATIC_IP_VPN_2 --target-vpn-gateway vpn-1 --region europe-west1 --ike-version 2 --shared-secret gcprocks --local-traffic-selector 0.0.0.0/0 --remote-traffic-selector 0.0.0.0/0
+gcloud compute vpn-tunnels create tunnel2to1 --peer-address $STATIC_IP_VPN_1 --target-vpn-gateway vpn-2 --region asia-east1 --ike-version 2 --shared-secret gcprocks --local-traffic-selector 0.0.0.0/0 --remote-traffic-selector 0.0.0.0/0
+gcloud compute vpn-tunnels list
+
+gcloud compute routes create route1to2 --network vpc-1 --next-hop-vpn-tunnel  tunnel1to2 --next-hop-vpn-tunnel-region  europe-west1 --destination-range 10.10.2.0/24
+
+gcloud compute routes create route2to1 --network vpc-2 --next-hop-vpn-tunnel  tunnel2to1 --next-hop-vpn-tunnel-region  asia-east1 --destination-range 10.10.1.0/24
