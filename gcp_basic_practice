@@ -1,0 +1,32 @@
+App Engine Standard Environment:
+->based on container instances running on Google's infrastructure
+->App Engine standard environment makes it easy to build and deploy an application that runs reliably even under heavy load and with large amounts of data
+->It includes the following features:
+1.Persistent storage with queries, sorting, and transactions.
+2.Automatic scaling and load balancing
+3.Asynchronous task queues for performing work outside the scope of a request.
+4.Scheduled tasks for triggering events at specified times or regular intervals.
+5.Integration with other Google cloud services and APIs.
+6.independent of the hardware, operating system, or physical location of the server.
+
+Data storage, retrieval, and search:
+App Engine Datastore is a schemaless NoSQL datastore providing robust, scalable storage for your web application, with the following features:
+No planned downtime
+Atomic transactions
+High availability of reads and writes
+Strong consistency for reads and ancestor queries
+Eventual consistency for all other queries
+note:a transaction cannot succeed unless every one of its operations succeeds; if any of the operations fails, the transaction is automatically rolled back. This is especially useful for distributed web applications, where multiple users can be accessing or manipulating the same data at the same time.
+Datastore Backup/Restore:
+You can backup using either Blobstore or Google Cloud Storage.
+
+
+Google Cloud SQL:
+ ideal for small to medium-sized applications.
+
+Google Cloud SQL provides these features:
+
+
+
+
+
