@@ -1,0 +1,14 @@
+cmon_ip
+=======
+x.x.x.x
+x.x.x.x
+
+
+
+script
+======
+for i in `cat cmon_ip`
+do
+ssh -t -q $i 'sudo sed -i -e "s/10.207.140.16/10.207.140.13/g" /kohls/cavisson/monitors/sys/cmon.env; cat /kohls/cavisson/monitors/sys/cmon.env;   uname -n ; sudo -u pzmdop /kohls/cavisson/monitors/bin/cmon start '
+done
+
