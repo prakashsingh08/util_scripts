@@ -1,13 +1,19 @@
-cmon_ip
+redis_ip
 =======
 x.x.x.x
 x.x.x.x
+
+To get Redis Ips list in file:
+==============================
+gcloud compute instances list | grep  kohls-rhel7-mobile-redis-sep-use1b-perf3 |awk '{print $8}' > redis_ip
+
+
 
 
 
 script
 ======
-for i in `cat cmon_ip`
+for i in `cat redis_ip`
 do
 ssh -t -q $i 'sudo sed -i -e "s/10.207.140.16/10.207.140.13/g" /kohls/cavisson/monitors/sys/cmon.env; cat /kohls/cavisson/monitors/sys/cmon.env;   uname -n ; sudo -u pzmdop /kohls/cavisson/monitors/bin/cmon start '
 done
