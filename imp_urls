@@ -8,3 +8,6 @@ To get pods attcjed to particular service
 =======
 kubectl get po --selector=app=mui,isLive=true,version=R18_9_1_33 --all-namespaces
 
+kubectl get svc    -n r18-9-1-mui-dev   -o=custom-columns=" ":".spec.selector.app",".spec.selector.version"
+
+
