@@ -28,3 +28,9 @@ ssh -t -q $i ' uname -n ; sudo /srv/prop/cavisson/monitors/bin/cmon stop ; sudo 
 done
 
 
+=====
+for loop for curl
+
+while sleep 5; do curl -L https://www.google.com; done
+
+
