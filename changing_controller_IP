@@ -33,4 +33,8 @@ for loop for curl
 
 while sleep 5; do curl -L https://www.google.com; done
 
+====
+for loop for hpa
+for (( c=1; c<=100000000; c++ )); do echo "$(date)" && kubectl get hpa --all-namespaces  | awk '$9 != "0"' && sleep 60; done
+
 
