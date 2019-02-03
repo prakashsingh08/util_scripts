@@ -1,0 +1,6 @@
+1. TO Authenticate gcp using ServiceAccount key file.
+ 
+ 
+   $ gcloud auth activate-service-account \
+  test-service-account@google.com \
+          --key-file=/path/key.json --project=testproject
