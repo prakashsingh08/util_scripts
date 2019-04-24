@@ -28,3 +28,12 @@ job('DSL-Tutorial-1-Test') {
 }
 
 ======================
+job('PROJ-release') {
+    scm {
+        git(gitUrl)
+    }
+    steps {
+        maven('-B release:prepare release:perform')
+        shell('your scripts')
+    }
+}
