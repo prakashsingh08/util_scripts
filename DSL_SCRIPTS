@@ -37,3 +37,16 @@ job('PROJ-release') {
         shell('your scripts')
     }
 }
+=====================
+def gitUrl = 'git://github.com/jenkinsci/job-dsl-plugin.git'
+
+
+job('parameterized-hello-world') {
+   parameters {
+     stringParam('MESSAGE', 'Hello world!') 
+     stringParam('MESSAGE2', 'Hello world!')
+   }
+  steps {
+    shell('echo $MESSAGE')
+  }
+}
