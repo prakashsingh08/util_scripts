@@ -1,7 +1,8 @@
-1. to delete evicetd pods
+1. To delete evicetd pods   
 kubectl get po -a --all-namespaces -o json | \
 jq  '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | 
 "kubectl delete po \(.metadata.name) -n \(.metadata.namespace)"' | xargs -n 1 bash -c
 
-2.
-https://github.com/pksingh12/util_scripts/edit/master/Kubernetes_imp_commands
+2.To get to know unhelthy k8s nodes   
+kubectl get nodes --no-headers | awk '{if ($2 == "NotReady" ) system ("echo Node is unhealthy " $1)}'
+
