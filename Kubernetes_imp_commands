@@ -6,3 +6,6 @@ jq  '.items[] | select(.status.reason!=null) | select(.status.reason | contains(
 2.To get to know unhelthy k8s nodes   
 kubectl get nodes --no-headers | awk '{if ($2 == "NotReady" ) system ("echo Node is unhealthy " $1)}'
 
+3.to get to know image from all enabled deployment in all namespaces
+kubectl get deploy --all-namespaces  --no-headers | awk '{if ($6 == "1") system (" kubectl get deploy "$2 " -o yaml -n "$1" |grep -i image:")}'
+
