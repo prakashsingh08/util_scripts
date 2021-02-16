@@ -1,0 +1,52 @@
+def gitUrl = 'git://github.com/jenkinsci/job-dsl-plugin.git'
+
+job('DSL-Tutorial-1-Test') {
+    scm {
+        git(gitUrl,'master')
+        
+    }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        maven('-e clean test')
+    }
+}
+
+======================
+job('DSL-Tutorial-1-Test') {
+    scm {
+        git('https://github.com/goxr3plus/Simplest-Spring-Boot-Hello-World.git','master')
+        
+    }
+    triggers {
+        scm('H/15 * * * *')
+    }
+    steps {
+        maven('-e clean test')
+    }
+}
+
+======================
+job('PROJ-release') {
+    scm {
+        git(gitUrl)
+    }
+    steps {
+        maven('-B release:prepare release:perform')
+        shell('your scripts')
+    }
+}
+=====================
+def gitUrl = 'git://github.com/jenkinsci/job-dsl-plugin.git'
+
+
+job('parameterized-hello-world') {
+   parameters {
+     stringParam('MESSAGE', 'Hello world!') 
+     stringParam('MESSAGE2', 'Hello world!')
+   }
+  steps {
+    shell('echo $MESSAGE')
+  }
+}

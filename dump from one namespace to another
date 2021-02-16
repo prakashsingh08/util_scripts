@@ -1,0 +1,23 @@
+below ae sample commands
+========================
+
+kubectl get configmaps sites-config-3  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get configmaps nginx-config-3  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get configmaps htdoc-config-3  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get secrets tls-cert-3  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get deployments ingress-3  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get svc ingress  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+kubectl get svc ingress  -o json --namespace r18-9-ingress-dev | jq '.metadata.namespace = "r19-1-ingress-dev"' | kubectl create -f  -
+
+
+
+
+
+
+kubectl get deployments,rs,secrets,configmaps,services -o json --namespace r18-6-auth-dev | jq '.items[].metadata.namespace = "r18-6-cbp-auth-dev"' | kubectl create -f  -

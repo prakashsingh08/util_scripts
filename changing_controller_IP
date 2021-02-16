@@ -1,0 +1,40 @@
+redis_ip
+=======
+x.x.x.x
+x.x.x.x
+
+To get Redis Ips list in file:
+==============================
+gcloud compute instances list | grep  kohls-rhel7-mobile-redis-sep-use1b-perf3 |awk '{print $8}' > redis_ip
+
+
+
+
+
+script
+======
+for i in `cat redis_ip`
+do
+ssh -t -q $i 'sudo sed -i -e "s/10.207.140.16/10.207.140.13/g" /kohls/cavisson/monitors/sys/cmon.env; cat /kohls/cavisson/monitors/sys/cmon.env;   uname -n ; sudo -u pzmdop /kohls/cavisson/monitors/bin/cmon start '
+done
+
+
+
+stop cmon.sh
+-------------
+for i in `cat cmon_ip`
+do 
+ssh -t -q $i ' uname -n ; sudo /srv/prop/cavisson/monitors/bin/cmon stop ; sudo -u pzmdop /kohls/cavisson/monitors/bin/cmon stop '
+done
+
+
+=====
+for loop for curl
+
+while sleep 5; do curl -L https://www.google.com; done
+
+====
+for loop for hpa
+for (( c=1; c<=100000000; c++ )); do echo "$(date)" && kubectl get hpa --all-namespaces  | awk '$9 != "0"' && sleep 60; done
+
+
